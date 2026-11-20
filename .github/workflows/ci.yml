@@ -1,1 +1,23 @@
+name: Java CI Pipeline
 
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Compile Java
+        run: javac Main.java
+
+      - name: Run Java
+        run: java Main
